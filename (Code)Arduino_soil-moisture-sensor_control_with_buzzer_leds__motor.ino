@@ -8,6 +8,7 @@ int green_led = 8;
 int red_led_2 = 9;
 int engine = A3;
 int buzzer = 11;
+
 #define Doo 262
 #define Re  294
 #define Mi  330
@@ -15,9 +16,10 @@ int buzzer = 11;
 #define Sol 392
 #define La  440
 #define Si  494
-#define Dos 523
+
+
 int sensor_signal = A1;
-int veri;
+int data;
 void setup()
 {
   Serial.begin(9600);
@@ -37,10 +39,10 @@ void setup()
 
 void loop()
 { 
-  veri = analogRead(sensor_signal);
+  data = analogRead(sensor_signal);
   Serial.print("Soil Moisture Sensor value : ");
-  Serial.println(veri);
-  if (veri <= 75) { 
+  Serial.println(data);
+  if (data <= 75) { 
     
     digitalWrite(red_led, HIGH);
     digitalWrite(blue_led, LOW);
@@ -52,7 +54,7 @@ void loop()
     tone(buzzer, Doo);
     
   } 
-  else if (veri <=200)  
+  else if (data <=200)  
   { 
     digitalWrite(red_led, LOW);
     digitalWrite(blue_led, HIGH);
@@ -65,7 +67,7 @@ void loop()
     
   }
 
-  else if (veri <=325)  
+  else if (data <=325)  
   { 
     digitalWrite(red_led, LOW);
     digitalWrite(blue_led, LOW);
@@ -77,7 +79,7 @@ void loop()
     tone(buzzer, Mi);
     
   }
-    else if (veri <=450)  
+    else if (data <=450)  
   { 
     digitalWrite(red_led, LOW);
     digitalWrite(blue_led, LOW);
@@ -89,7 +91,7 @@ void loop()
     tone(buzzer, Fa);
     
   }
-    else if (veri <=565)  
+    else if (data <=565)  
   { 
     digitalWrite(red_led, LOW);
     digitalWrite(blue_led, LOW);
@@ -101,7 +103,7 @@ void loop()
     tone(buzzer, Sol);
     
   }
-    else if (veri <=690)  
+    else if (data <=690)  
   { 
     digitalWrite(red_led, LOW);
     digitalWrite(blue_led, LOW);
